@@ -6,8 +6,6 @@ import springframework.sfgpetclinic.model.Owner;
 import springframework.sfgpetclinic.model.Vet;
 import springframework.sfgpetclinic.services.OwnerService;
 import springframework.sfgpetclinic.services.VetService;
-import springframework.sfgpetclinic.services.map.OwnerServiceMap;
-import springframework.sfgpetclinic.services.map.VetServiceMap;
 
 
 @Component
@@ -16,10 +14,9 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    //Refactoring later using DI
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     //id assignment must be refactored
