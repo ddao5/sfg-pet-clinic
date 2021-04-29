@@ -5,6 +5,7 @@ import springframework.sfgpetclinic.model.Vet;
 import springframework.sfgpetclinic.services.VetService;
 
 import java.util.Set;
+
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
