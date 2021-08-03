@@ -1,13 +1,16 @@
 package springframework.sfgpetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import springframework.sfgpetclinic.model.Visit;
 import springframework.sfgpetclinic.services.PetService;
 import springframework.sfgpetclinic.services.VisitService;
 
 import java.util.Set;
+
 @Service
-public class VisitMapService extends AbstractMapService<Visit,Long> implements VisitService {
+@Profile({"default", "map"})
+public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
     @Override
     public Set<Visit> findAll() {
         return super.findAll();
@@ -20,7 +23,7 @@ public class VisitMapService extends AbstractMapService<Visit,Long> implements V
 
     @Override
     public Visit save(Visit object) {
-        if(object.getPet() == null || object.getPet().getOwner() == null || object.getPet().getId() == null) {
+        if (object.getPet() == null || object.getPet().getOwner() == null || object.getPet().getId() == null) {
             throw new RuntimeException("Invalid Visit!");
         }
         return super.save(object);
